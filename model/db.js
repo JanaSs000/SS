@@ -1,9 +1,12 @@
 const { MongoClient } = require("mongodb");
-mongodb+srv://srbakoskaj_db_user:<db_password>@m0.gyjrp7p.mongodb.net/?appName=M0
 
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
 
+if (!uri) {
+    throw new Error("MONGODB_URI is not set");
+}
+
+const client = new MongoClient(uri);
 let db;
 
 async function connectDB() {
