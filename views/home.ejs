@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head', { title }) %>
+</head>
+
+<body class="home">
+
+<header>
+  <h1 class="home-title">Sparkle Style</h1>
+</header>
+
+<main class="home-content">
+
+  <div class="home-avatar">
+    <img id="home-avatar" src="/assets/avatar/finalAvatar.png">
+  </div>  
+
+  <aside class="right-buttons-home">
+
+    <section class="home-btn-block">
+      <a href="/dressup" class="home-big-btn">Dress Up</a>
+      <p class="home-sub">Create your own outfit.</p>
+    </section>
+
+    <section class="home-btn-block">
+      <a href="/saved" class="home-big-btn">Saved Outfits</a>
+      <p class="home-sub">Browse through your creations.</p>
+    </section>
+
+    <section class="home-btn-block">
+      <a href="/mypublished" class="home-big-btn">My Published Outfits</a>
+      <p class="home-sub">Browse your published outfits.</p>
+    </section>
+
+    <section class="home-btn-block">
+      <a href="/voting" class="home-big-btn">Voting Room</a>
+      <p class="home-sub">Vote on published outfits.</p>
+    </section>
+
+    <img id="btn-christmas" class="theme-btn-png home-btn-block" src="/assets/extra/gift.png">
+    <img id="btn-normal" class="theme-btn-png" src="/assets/extra/bow.png">
+  
+  </aside>
+
+</main>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+      const uid = localStorage.getItem("sparkleUserId");
+  
+      // find link by text, not href
+      const link = Array.from(document.querySelectorAll("a"))
+          .find(a => a.textContent.trim().includes("Published"));
+  
+      if (link && uid) {
+          link.href = "/mypublished?user=" + uid;
+      }
+  });
+</script>
+
+</body>
+</html>

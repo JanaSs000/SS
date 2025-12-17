@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("partials/head", { title }) %>
+</head>
+
+<body class="saved">
+
+  <%- include("partials/topbar", { showActions: false }) %>
+
+  <main class="container">
+
+    <section class="panel fullwidth-panel">
+      <header class="tab-left-save">Saved Outfits</header>
+
+      <article class="body-left-save">
+
+        <div class="library-grid" id="saved-grid"></div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <!-- POPUP -->
+  <div id="saved-popup" class="popup hidden">
+    <div class="popup-window">
+
+      <div class="popup-outfit" id="popup-preview"></div>
+
+      <div class="popup-actions">
+        <button id="edit-btn" class="btn">Keep Editing</button>
+        <button id="delete-btn" class="btn">Delete</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let currentId = null;
+    
+    // load all saved outfits from localStorage
+    const grid = document.getElementById("saved-grid");
+    const all = JSON.parse(localStorage.getItem("savedOutfits") || "{}");
+    
+    Object.values(all).forEach(o => {
+      const box = document.createElement("div");
+      box.className = "saved-thumb saved-item";
+      box.dataset.id = o.id;
+    
+      const avatar = document.createElement("div");
+      avatar.className = "thumb-avatar";
+    
+      // base
+      const base = document.createElement("img");
+      base.className = "thumb-layer";
+      base.src = "/assets/avatar/avatar.png";
+      avatar.appendChild(base);
+    
+      // layers
+      ["hair", "top", "pants", "skirt", "shoes", "accessory"].forEach(layer => {
+        if (o[layer]) {
+          const img = document.createElement("img");
+          img.className = "thumb-layer";
+          img.src = o[layer];
+          img.style.filter = `hue-rotate(${o.hues?.[layer] || 0}deg)`;
+          avatar.appendChild(img);
+        }
+      });
+    
+      box.appendChild(avatar);
+      grid.appendChild(box);
+    
+      box.addEventListener("click", () => {
+        currentId = o.id;
+        document.getElementById("popup-preview").innerHTML = box.innerHTML;
+        document.getElementById("saved-popup").classList.remove("hidden");
+      });
+    });
+    
+    // close popup
+    document.getElementById("saved-popup").addEventListener("click", e => {
+      if (e.target.id === "saved-popup") {
+        e.target.classList.add("hidden");
+      }
+    });
+    
+    // edit
+    document.getElementById("edit-btn").addEventListener("click", () => {
+      if (!currentId) return;
+      window.location.href = `/dressup/edit/${currentId}`;
+    });
+    
+    // delete
+    document.getElementById("delete-btn").addEventListener("click", () => {
+      if (!currentId) return;
+    
+      const all = JSON.parse(localStorage.getItem("savedOutfits") || "{}");
+      delete all[currentId];
+      localStorage.setItem("savedOutfits", JSON.stringify(all));
+      
+      window.location.reload();
+    });
+    </script>
+    
+
+</body>
+
+</html>

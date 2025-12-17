@@ -1,0 +1,211 @@
+{
+  "1765894062519": {
+    "hair": "http://localhost:8989/assets/clothes/christmas/hair/hair10.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top10.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom3.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes8.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory3.png",
+    "hues": {
+      "hair": "0",
+      "top": "296",
+      "pants": "0",
+      "skirt": "278",
+      "shoes": "284",
+      "accessory": "289"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 2,
+    "dislikes": 0
+  },
+  "1765894099055": {
+    "hair": "http://localhost:8989/assets/clothes/christmas/hair/hair6.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top8.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom2.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes6.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory4.png",
+    "hues": {
+      "hair": "0",
+      "top": "0",
+      "pants": "0",
+      "skirt": "124",
+      "shoes": "341",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 1,
+    "dislikes": 1
+  },
+  "1765969865600": {
+    "hair": "http://localhost:8989/assets/clothes/christmas/hair/hair10.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top10.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom2.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes9.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory5.png",
+    "hues": {
+      "hair": "0",
+      "top": "0",
+      "pants": "0",
+      "skirt": "278",
+      "shoes": "338",
+      "accessory": "67"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 1,
+    "dislikes": 0
+  },
+  "1765894687290": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair1.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top8.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom1.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes8.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory2.png",
+    "hues": {
+      "hair": "0",
+      "top": "0",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "0",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 1,
+    "dislikes": 0
+  },
+  "1765970345403": {
+    "hair": "http://localhost:8989/assets/clothes/christmas/hair/hair8.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top7.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom3.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes8.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory3.png",
+    "hues": {
+      "hair": "0",
+      "top": "0",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "0",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 0
+  },
+  "1765973704322": {
+    "hair": "http://localhost:8989/assets/clothes/christmas/hair/hair6.png",
+    "top": "http://localhost:8989/assets/clothes/christmas/tops/top9.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/christmas/skirts/bottom2.png",
+    "shoes": "http://localhost:8989/assets/clothes/christmas/shoes/shoes6.png",
+    "accessory": "http://localhost:8989/assets/clothes/christmas/accessories/accessory5.png",
+    "hues": {
+      "hair": "0",
+      "top": "251",
+      "pants": "0",
+      "skirt": "109",
+      "shoes": "0",
+      "accessory": "254"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 0
+  },
+  "1765973762135": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair2.png",
+    "top": "http://localhost:8989/assets/clothes/tops/top3.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/skirts/skirt2.png",
+    "shoes": "http://localhost:8989/assets/clothes/shoes/shoes4.png",
+    "accessory": "",
+    "hues": {
+      "hair": "221",
+      "top": "227",
+      "pants": "0",
+      "skirt": "234",
+      "shoes": "259",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 0
+  },
+  "1765973797869": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair2.png",
+    "top": "http://localhost:8989/assets/clothes/tops/top4.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/skirts/skirt2.png",
+    "shoes": "http://localhost:8989/assets/clothes/shoes/shoes3.png",
+    "accessory": "",
+    "hues": {
+      "hair": "0",
+      "top": "0",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "0",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 0
+  },
+  "1765973848352": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair5.png",
+    "top": "http://localhost:8989/assets/clothes/tops/top5.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/skirts/skirt3.png",
+    "shoes": "http://localhost:8989/assets/clothes/shoes/shoes3.png",
+    "accessory": "",
+    "hues": {
+      "hair": "0",
+      "top": "152",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "53",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 0
+  },
+  "1765974049482": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair2.png",
+    "top": "http://localhost:8989/assets/clothes/tops/top4.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/skirts/skirt3.png",
+    "shoes": "http://localhost:8989/assets/clothes/shoes/shoes3.png",
+    "accessory": "",
+    "hues": {
+      "hair": "0",
+      "top": "220",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "0",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 1
+  },
+  "1765974254075": {
+    "hair": "http://localhost:8989/assets/clothes/hair/hair2.png",
+    "top": "http://localhost:8989/assets/clothes/tops/top3.png",
+    "pants": "",
+    "skirt": "http://localhost:8989/assets/clothes/skirts/skirt4.png",
+    "shoes": "http://localhost:8989/assets/clothes/shoes/shoes3.png",
+    "accessory": "",
+    "hues": {
+      "hair": "0",
+      "top": "209",
+      "pants": "0",
+      "skirt": "0",
+      "shoes": "0",
+      "accessory": "0"
+    },
+    "user": "856ad3c4b15e45eebdf22080f1d8bfd3",
+    "likes": 0,
+    "dislikes": 1
+  }
+}

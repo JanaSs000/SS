@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("partials/head", { title }) %>
+</head>
+
+<body>
+
+  <%- include("partials/topbar", { showActions: true }) %>
+
+    <main class="container">
+
+      <!-- LEFT PANEL -->
+      <section class="panel left-panel">
+
+        <header class="tab-left">Avatar Preview</header>
+
+        <article class="body-left">
+          <div id="avatar">
+
+            <!-- base avatar -->
+            <img id="layer-background" class="layer" src="">
+            <img id="layer-base" class="layer" src="/assets/avatar/avatar.png">
+
+            <!-- start empty; JS fills these -->
+            <img id="layer-hair" class="layer" src="" data-hue="0">
+            <img id="layer-top" class="layer" src="" data-hue="0">
+            <img id="layer-shoes" class="layer" src="" data-hue="0">
+            <img id="layer-pants" class="layer" src="" data-hue="0">
+            <img id="layer-skirt" class="layer" src="" data-hue="0">
+            <img id="layer-accessory" class="layer" src="" data-hue="0">
+
+          </div>
+        </article>
+
+      </section>
+
+      <!-- RIGHT PANEL -->
+      <section class="panel right-panel">
+        <header class="tab-right">Clothing Items</header>
+
+        <article class="body-right">
+
+          <!-- HAIR -->
+          <section>
+            <h3>Hair</h3>
+            <div class="grid">
+              <% hair.forEach(file=> { %>
+                <div class="item item-hair colorable" data-layer="hair" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-hair">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+          <!-- ACCESSORIES -->
+          <section>
+            <h3>Accessories</h3>
+            <div class="grid">
+              <% accessories.forEach(file=> { %>
+                <div class="item item-accessory" data-layer="accessory" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-accessory">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+          <!-- TOPS -->
+          <section>
+            <h3>Tops</h3>
+            <div class="grid">
+              <% tops.forEach(file=> { %>
+                <div class="item item-top colorable" data-layer="top" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-top">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+          <!-- SKIRTS -->
+          <section>
+            <h3>Skirts</h3>
+            <div class="grid">
+              <% skirts.forEach(file=> { %>
+                <div class="item item-skirt colorable" data-layer="skirt" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-skirt">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+          <!-- PANTS -->
+          <section>
+            <h3>Pants</h3>
+            <div class="grid">
+              <% pants.forEach(file=> { %>
+                <div class="item item-pants colorable" data-layer="pants" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-pants">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+          <!-- SHOES -->
+          <section>
+            <h3>Shoes</h3>
+            <div class="grid">
+              <% shoes.forEach(file=> { %>
+                <div class="item item-shoes colorable" data-layer="shoes" data-file="<%= file %>"
+                  data-christmas="<%= file.includes('/christmas/') %>">
+                  <div class="thumb-wrapper">
+                    <img src="<%= file %>" class="thumb thumb-shoes">
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </section>
+
+        </article>
+      </section>
+
+
+    </main>
+
+    <!-- HUE SLIDER TEMPLATE -->
+    <div id="hue-template" style="display:none;">
+      <div class="hue-wrapper">
+        <input class="hue-slider" type="range" min="0" max="360" value="0">
+      </div>
+    </div>
+    <div id="publish-error" class="popup hidden">
+      <div class="popup-window">
+        <p class="popup-text">Please fully dress the avatar before publishing.</p>
+        <button id="error-close" class="btn">OK</button>
+      </div>
+    </div>
+    <!-- Downloda Popup -->
+    <div id="download-popup" class="popup hidden">
+
+      <div class="popup-window" style="max-width: 500px;">
+
+        <header class="popup-header">
+          <h2>Choose Background</h2>
+          <span class="close-popup" id="close-download-popup">&times;</span>
+        </header>
+
+        <div class="popup-content">
+          <p>Select a background for your style or upload your own.</p>
+
+          <div class="bg-grid" id="bg-options">
+            <div class="bg-option selected" data-type="color" data-val="transparent">
+              <div class="bg-thumb"
+                style="background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 20px 20px;">
+              </div>
+              <span>None</span>
+            </div>
+
+            <div class="bg-option" data-type="color" data-val="#ffe6f2">
+              <div class="bg-thumb" style="background-color: #ffe6f2;"></div>
+              <span>Pink</span>
+            </div>
+
+            <div class="bg-option" data-type="color" data-val="#e6f2ff">
+              <div class="bg-thumb" style="background-color: #e6f2ff;"></div>
+              <span>Blue</span>
+            </div>
+
+            <!-- <div class="bg-option" data-type="image" data-val="/assets/avatar/avatar.png"> 
+             <div class="bg-thumb" style="background: url('/assets/avatar/avatar.png') center/cover;"></div>
+             <span>Avatar BG</span>
+          </div> -->
+
+            <div id="uploadedImagesContainer">
+            </div>
+          </div>
+
+          <div class="popup-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <button id="confirm-download-btn" class="btn btn-primary" style="background-color: #4a90e2; color: white;">
+              Download Image
+            </button>
+
+            <button class="btn" id="applyBG" style="border: 1px solid #ccc;">Use Background</button>
+
+            <input type="file" id="fileInput" style="display: none;">
+            <button id="upload-bg-btn" class="btn" style="border: 1px solid #ccc;">
+              Upload Background
+            </button>
+
+          </div>
+
+          <div id="bg-confirm-popup" class="popup hidden">
+            <div class="popup-window">
+              <p class="popup-text">Delete this background?</p>
+              <div class="popup-actions">
+                <button id="bg-confirm-delete" class="btn btn-danger">Delete</button>
+                <button id="bg-confirm-cancel" class="btn">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- LOCAL STORAGE LOADING LOGIC -->
+    <script>
+      (function () {
+        const parts = window.location.pathname.split("/");
+
+        // NEW OUTFIT: /dressup
+        if (parts.length === 2 && parts[1] === "dressup") {
+          window.loadedOutfit = null;
+          window.editingId = null;
+          return;
+        }
+
+        // EDIT OUTFIT: /dressup/edit/:id
+        if (parts.length === 4 && parts[1] === "dressup" && parts[2] === "edit") {
+          const id = parts[3];
+          const all = JSON.parse(localStorage.getItem("savedOutfits") || "{}");
+          window.loadedOutfit = all[id] || null;
+          window.editingId = id;
+          return;
+        }
+
+        // fallback
+        window.loadedOutfit = null;
+        window.editingId = null;
+      })();
+    </script>
+
+    <script src="/js/dressup.js"></script>
+
+</body>
+
+</html>

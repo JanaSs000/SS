@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<title>
+  <%= title %>
+</title>
+<script>
+  function sparkleUUID() {
+    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+</script>
+<script>
+  let uid = localStorage.getItem("sparkleUserId");
+  if (!uid || uid === "null" || uid === "undefined") {
+    uid = sparkleUUID();
+    localStorage.setItem("sparkleUserId", uid);
+  }
+  window.sparkleUserId = uid;
+</script>
+
+
+<!-- THEME SYSTEM -->
+<script src="/js/theme.js" defer></script>

@@ -1,0 +1,1184 @@
+/* GLOBAL STYLES */
+
+:root {
+  /* Global thumbnail scale factor */
+  --thumb-scale: 0.35;
+  --thumb-scale-acc: 0.25;
+
+  /* Vertical offsets for each category (relative to the 900px PNG height) */
+  --hair-offset: 1100px;
+  --top-offset: 900px;
+  --skirt-offset: 750px;
+  --pants-offset: 750px;
+  --shoes-offset: 400px;
+  --accessory-offset: 1500px;
+}
+
+body {
+  margin: 0;
+  font-family: "Comic Neue", sans-serif;
+  background-image:
+    radial-gradient(circle at center,
+      rgba(255, 207, 255, 0.95) 0%,
+      #e49be9 25%,
+      #c37ccf 55%,
+      #a869c2 80%,
+      #9453b1 100%);
+  background-size: cover;
+}
+
+
+/* TOP BAR */
+
+.topbar {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  text-decoration: none;
+  background: #f6d8ff;
+  padding: 12px 25px;
+  border-radius: 40px;
+  border: none;
+  font-family: "Comic Neue", sans-serif !important;
+  font-size: 20px;
+  color: #7d4d9c;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 #744b85;
+  margin-right: 5px;
+}
+
+.right-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+
+/* MAIN PAGE LAYOUT (PANELS) */
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  margin-top: 20px;
+  height: calc(100vh - 120px);
+  align-items: stretch;
+}
+
+.panel {
+  width: 49%;
+  position: relative;
+  height: auto !important;
+}
+
+.fullwidth-panel {
+  width: 100%;
+  background: #eec8eb;
+  border-radius: 40px;
+  box-shadow: 8px 0 #8d5c92;
+  padding: 40px;
+  margin-top: -30px;
+  min-height: min-content;
+}
+
+/* PANEL TABS */
+
+.tab-left,
+.tab-right {
+  position: absolute;
+  top: -87px;
+  width: min(320px, 90%);
+  height: 75px;
+  background: #eec8eb;
+  border-radius: 40px 40px 0 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+  font-size: 26px;
+  color: #cc60e9;
+}
+
+.tab-left {
+  right: 0;
+  box-shadow: 8px 0 #8d5c92;
+}
+
+.tab-right {
+  left: 0;
+  height: 90px;
+  z-index: 1;
+  box-shadow: 8px 0 #8d5c92;
+}
+
+.tab-left-save {
+  right: 0;
+  box-shadow: 8px 0 #8d5c92;
+  position: absolute;
+  top: -60px;
+  width: min(320px, 90%);
+  height: 75px;
+  background: #eec8eb;
+  border-radius: 40px 40px 0 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+  font-size: 26px;
+  color: #cc60e9;
+}
+
+
+/* PANEL BODY STYLES */
+
+.body-left,
+.body-right,
+.body-left-vote {
+  background: #eec8eb;
+  height: 100% !important;
+  border-radius: 40px;
+  box-shadow: 8px 0 #8d5c92;
+  padding: 40px;
+  margin-top: -30px;
+}
+
+.body-left {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.body-right {
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.body-right h3 {
+  margin: 0;
+}
+
+.body-left-vote .avatar-box {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  min-height: 500px;
+  padding-top: 20px;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-box img {
+  position: relative;
+}
+
+/* Items */
+.grid {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+/* HOME PAGE */
+
+
+.home-title {
+  text-align: center;
+  font-size: 90px;
+  color: #cc4fe4;
+  text-shadow: 6px 6px #8a3fab;
+  margin: 40px 0px 20px;
+}
+
+.home-content {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+}
+
+.home-avatar img {
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.avatar-label {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.right-buttons-home {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+  min-width: max-content;
+}
+
+.home-btn-block {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.home-big-btn {
+  background: #f6d8ff;
+  padding: 10px 45px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 0 #8d5c92;
+  color: #b72ce1;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.home-sub {
+  margin-top: 20px;
+  font-size: 24px;
+  font-style: italic;
+  color: #9a40c8;
+  text-shadow: 1px 1px #7d3e97;
+}
+
+
+/* VOTING PAGE */
+
+.vote-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.vote-counts {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.library-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  margin-top: 40px;
+  padding-right: 20px;
+  justify-content: center;
+}
+
+/* Outfit placeholders*/
+/* Outfit Library thumbnails */
+.outfit-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  /* fixes bleed */
+}
+
+.outfit-box .layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* scale to square */
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.home-avatar {
+  width: 350px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-avatar img {
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Layering */
+#avatar {
+  position: relative;
+  top: 10%;
+  width: 400px;
+  height: 600px;
+}
+
+#avatar {
+  isolation: isolate;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 600px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.layer {
+  will-change: filter;
+  isolation: isolate;
+}
+
+.layer[src=""] {
+  display: none;
+}
+
+/* Big avatar in Current Outfit */
+.body-left-vote .avatar-box .layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 600px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.item {
+  width: 130px;
+  overflow: visible;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+}
+
+.thumb-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  /* containment without hiding whole item */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.thumb {
+  width: 600px;
+  height: 900px;
+  transform-origin: top center;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+}
+
+.item-hair {
+  height: 160px;
+}
+
+.item-top {
+  height: 140px;
+}
+
+.item-skirt,
+.item-pants {
+  height: 180px;
+}
+
+.item-shoes {
+  height: 130px;
+}
+
+.item-accessory {
+  height: 200px;
+}
+
+.thumb-hair {
+  transform: translateY(calc(var(--hair-offset) * var(--thumb-scale))) scale(var(--thumb-scale));
+}
+
+.thumb-top {
+  transform: translateY(calc(var(--top-offset) * var(--thumb-scale))) scale(var(--thumb-scale));
+}
+
+.thumb-skirt {
+  transform: translateY(calc(var(--skirt-offset) * var(--thumb-scale))) scale(var(--thumb-scale));
+}
+
+.thumb-pants {
+  transform: translateY(calc(var(--pants-offset) * var(--thumb-scale))) scale(var(--thumb-scale));
+}
+
+.thumb-shoes {
+  transform: translateY(calc(var(--shoes-offset) * var(--thumb-scale))) scale(var(--thumb-scale));
+}
+
+.thumb-accessory {
+  transform: translateY(calc(var(--accessory-offset) * var(--thumb-scale-acc))) scale(var(--thumb-scale-acc));
+}
+
+
+.popup.hidden {
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-window {
+  background: #eec8eb;
+  padding: 40px;
+  border-radius: 30px;
+  width: 400px;
+  box-shadow: 8px 8px 0 #8d5c92;
+  text-align: center;
+}
+
+.popup-outfit {
+  background: #cda3cb;
+  height: 300px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* GLOBAL RESPONSIVE RULES */
+
+@media (min-width:1500px){
+  .home-content{
+    margin-top: 12vh;
+  }
+}
+
+/* Hide tabs on smaller screens */
+@media (max-width: 1500px) {
+
+  .tab-left,
+  .tab-right {
+    display: none;
+  }
+
+  /* Pull panels upward when tabs disappear */
+  .body-left,
+  .body-right,
+  .body-left-save,
+  .body-left-vote {
+    margin-top: -30px !important;
+  }
+}
+
+
+/* STACK PANELS*/
+@media (max-width: 950px) {
+  .container {
+    flex-direction: column;
+    gap: 50px;
+    height: auto !important;
+    padding: 0 20px;
+  }
+
+  .panel {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .body-left,
+  .body-right,
+  .body-left-save,
+  .body-left-vote {
+    height: auto !important;
+    padding: 30px !important;
+  }
+}
+
+
+/* AVATAR FIXES*/
+@media (max-width: 900px) {
+  .avatar-box {
+    width: 90% !important;
+    max-width: 300px;
+    height: auto !important;
+  }
+
+  .avatar-box img {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+
+/* CLOTHING GRID RESPONSIVE */
+@media (max-width: 1200px) {
+  .grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    /* gap: 20px; */
+  }
+}
+
+
+/* HOME PAGE BUTTON RESPONSIVE */
+@media (max-width: 1100px) {
+  .home-content {
+    flex-direction: column;
+    /* gap: 60px; */
+  }
+
+  .home-avatar-panel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-big-btn {
+    font-size: 34px;
+    padding: 12px 35px;
+  }
+
+  .home-sub {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .home-big-btn {
+    font-size: 28px;
+    padding: 10px 25px;
+  }
+}
+
+
+/* VOTING ROOM BUTTONS & COUNTS */
+@media (max-width: 700px) {
+  .vote-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .vote-counts {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+  }
+}
+
+
+/* SAVED OUTFITS GRID RESPONSIVE */
+@media (max-width: 1200px) {
+  .library-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* Tablet stack */
+@media (max-width: 900px) {
+  body.saved .panel {
+    width: 100% !important;
+  }
+
+  .library-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 25px;
+  }
+
+  .outfit-box {
+    height: 300px !important;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 600px) {
+  .outfit-box {
+    height: 240px !important;
+  }
+}
+
+
+
+/* POPUP RESPONSIVE (Saved Page) */
+@media (max-width: 600px) {
+
+  .popup-window {
+    width: 85%;
+    padding: 25px;
+  }
+
+  .popup-outfit {
+    height: 220px;
+  }
+
+  .popup-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* SAVED OUTFITS THUMBNAILS */
+
+.saved-thumb,
+.published-thumb {
+  background: #eec8eb;
+  border-radius: 20px;
+  border: solid #8d5c92;
+  width: 360px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 6px 6px 0 #8d5c92;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.published-thumb {
+  width: 150px;
+}
+
+.thumb-avatar {
+  width: 140px;
+  height: 210px;
+  position: relative;
+}
+
+.thumb-avatar .thumb-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 210px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* HUE SLIDER */
+
+.hue-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 6px;
+  background: #a869c2;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* Chrome/Safari thumb */
+.hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #DB27E9;
+  border-radius: 50%;
+  border: 2px solid #BF7FC4;
+  cursor: pointer;
+}
+
+.item.selected .thumb-wrapper {
+  opacity: 0.4;
+}
+
+.popup-outfit {
+  width: 300px;
+  height: 500px;
+  position: relative;
+  margin: 10px auto;
+}
+
+.popup-outfit img.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 500px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#saved-popup .thumb-avatar {
+  width: 260px;
+  height: 390px;
+}
+
+#saved-popup .thumb-avatar .thumb-layer {
+  width: 260px;
+  height: 390px;
+}
+
+.popup-text {
+  font-size: 20px;
+  color: #7B3FA4;
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* ============================================================
+   THEME TOGGLE FLOATING PNG BUTTONS
+   ============================================================ */
+
+#theme-toggle {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 9999;
+}
+
+.theme-btn-png {
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+  display: none;
+  /* Shown by theme.js */
+  transition: transform 0.2s ease;
+  position: relative;
+  left: 175px;
+}
+
+.theme-btn-png:hover {
+  transform: scale(1.1);
+}
+
+
+/* ============================================================
+  CHRISTMAS THEME OVERRIDES
+  Only cosmetic changes. No layout breakage.
+============================================================ */
+
+body.christmas {
+  margin: 0;
+  font-family: "Comic Neue", sans-serif;
+
+  background-image:
+    radial-gradient(circle at center,
+      rgb(135 143 218 / 95%) 0%,
+      #6f86db 25%,
+      #646ada 55%,
+      #3c4580 80%,
+      #182958 100%);
+}
+
+body.christmas.home {
+  margin: 0;
+  font-family: "Comic Neue", sans-serif;
+
+  background-image:
+    /* CHRISTMAS ILLUSTRATION */
+    url(/assets/extra/background.png),
+    radial-gradient(circle at center,
+      rgb(135 143 218 / 95%) 0%,
+      #6f86db 25%,
+      #646ada 55%,
+      #3c4580 80%,
+      #182958 100%);
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+
+body.christmas .home-title {
+  color: #ffe0e0;
+  text-shadow: 6px 6px #1e298d;
+}
+
+body.christmas .home-big-btn {
+  background: #ffe0e0;
+  box-shadow: 6px 6px 0 #1e298d;
+  color: #0010aa;
+}
+
+body.christmas .home-sub {
+  color: #f9c6c6;
+  text-shadow: 1px 1px #1e298d;
+}
+
+/* ============================================================
+  CHRISTMAS – BUTTON BUBBLES ONLY
+============================================================ */
+
+body.christmas .btn {
+  background: #ffe0e0;
+  /* light pink bubble */
+  color: #1b65c1;
+  /* deep red text */
+  box-shadow: 4px 4px 0 #10164c;
+  /* darker red shadow */
+}
+
+body.christmas .home-big-btn {
+  background: #ffe0e0;
+  color: #1b65c1;
+  box-shadow: 6px 6px 0 #1e298d;
+}
+
+body.christmas a {
+  color: #1b65c1;
+  /* Back to Home link color */
+}
+
+/* ============================================================
+  CHRISTMAS – PANEL OUTLINE COLOR ONLY
+============================================================ */
+
+body.christmas .body-left,
+body.christmas .body-right,
+body.christmas .body-left-vote,
+body.christmas .fullwidth-panel {
+  box-shadow: 8px 0 #10164c;
+  /* deep red outline */
+}
+
+body.christmas .tab-left,
+body.christmas .tab-right,
+body.christmas .tab-left-save {
+  box-shadow: 8px 0 #10164c;
+  /* deep red tab outline */
+}
+
+
+/* ============================================================
+  CHRISTMAS – PANEL BACKGROUND TO MATCH BUTTON CREAM
+============================================================ */
+
+body.christmas .body-left,
+body.christmas .body-right,
+body.christmas .body-left-vote,
+body.christmas .fullwidth-panel {
+  background: #ffe0e0 !important;
+  /* same cream as buttons */
+}
+
+/* Tabs */
+body.christmas .tab-left,
+body.christmas .tab-right,
+body.christmas .tab-left-save {
+  background: #ffe0e0 !important;
+  /* same cream bubble */
+  color: #1b65c1 !important;
+  /* same deep red text */
+}
+
+body.christmas h3 {
+  color: #1b65c1 !important;
+}
+
+/* ============================================================
+  CHRISTMAS – POPUPS
+============================================================ */
+
+body.christmas .popup-window {
+  background: #ffe0e0 !important;
+  box-shadow: 8px 8px 0 #1e298d !important;
+  border: 3px solid #1b65c1 !important;
+}
+
+body.christmas .popup-outfit {
+  background: #ffd6d6 !important;
+  border: 3px solid #b30000 !important;
+}
+
+body.christmas .popup-actions .btn {
+  background: #ffe0e0 !important;
+  color: #1b65c1 !important;
+  box-shadow: 4px 4px 0 #1e298d !important;
+}
+
+/* Close button */
+body.christmas .close-popup {
+  color: #1b65c1 !important;
+}
+
+body.christmas .close-popup:hover {
+  color: #701d1d !important;
+}
+
+
+/* ============================================================
+  CHRISTMAS – SAVED / PUBLISHED THUMBNAILS
+============================================================ */
+
+body.christmas .saved-thumb,
+body.christmas .published-thumb {
+  background: #ffe0e0 !important;
+  border-color: #701d1d !important;
+  box-shadow: 6px 6px 0 #1e298d !important;
+}
+
+/* Avatar container inside thumbs */
+body.christmas .thumb-avatar .thumb-layer {
+  filter: drop-shadow(0 0 0 transparent);
+  /* prevents pink tint */
+}
+
+/* Popup preview avatar border */
+body.christmas #popup-preview,
+body.christmas #pub-preview {
+  background: #ffe0e0 !important;
+  border: 3px solid #1b65c1 !important;
+}
+
+
+/* ============================================================
+  CHRISTMAS – POPUP HEADER (Download BG popup)
+============================================================ */
+
+body.christmas .popup-header {
+  border-bottom: 2px solid #1e298d !important;
+}
+
+body.christmas .popup-header h2 {
+  color: #1b65c1 !important;
+}
+
+body.christmas .popup-text {
+  color: #1b65c1;
+}
+
+/* =========================================
+  DOWNLOAD POPUP STYLES 
+========================================= */
+#download-popup {
+  z-index: 10000;
+  /* Diğer her şeyin üstünde olması için */
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d4a5d8;
+  padding-bottom: 10px;
+}
+
+.close-popup {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #a869c2;
+  transition: color 0.2s;
+}
+
+.close-popup:hover {
+  color: #7d3e97;
+}
+
+/* Download popup background selector */
+.bg-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  margin: 20px 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  scroll-snap-type: x proximity;
+  width: 100%;
+}
+
+.bg-option {
+  cursor: pointer;
+  text-align: center;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.bg-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 3px solid #ddd;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+  background-position: center;
+  background-size: cover;
+}
+
+#uploadedImagesContainer {
+  display: contents;
+}
+
+.bg-option:hover .bg-thumb {
+  border-color: #c37ccf;
+}
+
+.bg-option.selected .bg-thumb {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px #d0e3f7;
+  transform: scale(1.05);
+}
+
+.bg-option span {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+}
+
+.popup-content p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.thumb-stats {
+  position: absolute;
+  bottom: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7d3e97;
+  display: flex;
+  gap: 12px;
+  box-shadow: 3px 3px 0 #8d5c92;
+}
+
+.thumb-likes {
+  color: #c933c9;
+}
+
+.thumb-dislikes {
+  color: #c93e3e;
+}
+
+body.christmas .thumb-stats {
+  box-shadow: 3px 3px #701d1d;
+}
+
+body.christmas .hue-slider {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 6px;
+  border-radius: 8px;
+  background: #1e298d;
+  cursor: pointer;
+  outline: none;
+}
+
+/* slider thumb (the knob) */
+body.christmas .hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #1e298d;
+  box-shadow: 0 0 5px #1e298d;
+}
+
+
+/* Background Delete Button*/
+.bg-option {
+  position: relative;
+}
+
+.delete-bg-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: none;
+  user-select: none;
+}
+
+.delete-bg-btn:hover {
+  background-color: #e60000;
+  transform: scale(1.1);
+}
+
+.bg-option:hover .delete-bg-btn {
+  display: block;
+}
+
+/* ================================
+   FORCE CATEGORY VISIBILITY BY THEME
+   ================================ */
+
+/* DEFAULT: show pants, hide accessories */
+.item-pants {
+  display: flex;
+}
+
+.item-accessory {
+  display: none;
+}
+
+/* CHRISTMAS MODE OVERRIDES */
+body.christmas .item-pants {
+  display: none;
+}
+
+body.christmas .item-accessory {
+  display: flex;
+}
+
+/* Labels */
+h3 {
+  display: block;
+}
+
+/* Hide labels explicitly */
+body.christmas h3:has(+ .grid .item-pants) {
+  display: none;
+}
+
+body:not(.christmas) h3:has(+ .grid .item-accessory) {
+  display: none;
+}

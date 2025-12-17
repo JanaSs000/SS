@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("partials/head", { title }) %>
+</head>
+
+<body class="saved">
+
+  <%- include("partials/topbar", { showActions: false }) %>
+
+  <main class="container">
+
+    <section class="panel fullwidth-panel">
+      <header class="tab-left-save">My Published Outfits</header>
+
+      <article class="body-left-save">
+
+        <div class="library-grid">
+
+          <% Object.entries(outfits).forEach(([id, o]) => { %>
+            
+            <div class="saved-thumb published-item" data-id="<%= id %>">
+
+              <div class="thumb-avatar">
+
+                <img class="thumb-layer" src="/assets/avatar/avatar.png">
+
+                <% if (o.hair) { %>
+                  <img class="thumb-layer" src="<%= o.hair %>"
+                    style="filter: hue-rotate(<%= o.hues?.hair || 0 %>deg)">
+                <% } %>
+
+                <% if (o.top) { %>
+                  <img class="thumb-layer" src="<%= o.top %>"
+                    style="filter: hue-rotate(<%= o.hues?.top || 0 %>deg)">
+                <% } %>
+                
+                <% if (o.shoes) { %>
+                  <img class="thumb-layer" src="<%= o.shoes %>"
+                    style="filter: hue-rotate(<%= o.hues?.shoes || 0 %>deg)">
+                <% } %>
+                
+                <% if (o.pants) { %>
+                  <img class="thumb-layer" src="<%= o.pants %>"
+                    style="filter: hue-rotate(<%= o.hues?.pants || 0 %>deg)">
+                <% } %>
+
+                <% if (o.skirt) { %>
+                  <img class="thumb-layer" src="<%= o.skirt %>"
+                    style="filter: hue-rotate(<%= o.hues?.skirt || 0 %>deg)">
+                <% } %>
+
+                <% if (o.accessory) { %>
+                  <img class="thumb-layer"
+                       src="<%= o.accessory %>"
+                       style="filter: hue-rotate(<%= o.hues?.accessory || 0 %>deg)">
+                <% } %>
+
+
+              </div>
+
+            </div>
+
+          <% }) %>
+
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+
+  <!-- POPUP -->
+  <div id="pub-popup" class="popup hidden">
+    <div class="popup-window">
+
+      <div class="popup-outfit" id="pub-preview"></div>
+
+      <div class="stats">
+        Likes: <span id="stat-likes"></span><br>
+        Dislikes: <span id="stat-dislikes"></span>
+      </div>
+
+      <div class="popup-actions">
+
+        <form action="/published/delete" method="POST" id="pub-delete-form">
+          <input type="hidden" name="id" id="pub-delete-id">
+          <input type="hidden" name="user" value="<%= outfits[Object.keys(outfits)[0]]?.user %>">
+          <button class="btn">Delete</button>
+        </form>
+
+        <button class="btn vote">Vote</button>
+
+      </div>
+
+    </div>
+  </div>
+
+
+<script>
+  window.mypublishedOutfits = <%- JSON.stringify(outfits) %>;
+</script>
+<script src="/js/mypublished.js"></script>
+<script>
+  const uid = localStorage.getItem("sparkleUserId");
+  const params = new URLSearchParams(window.location.search);
+
+  // if user param missing, enforce it
+  if (!params.has("user")) {
+      window.location.replace("/mypublished?user=" + uid);
+  }
+</script>
+
+</body>
+</html>

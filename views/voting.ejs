@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head', { title }) %>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a href="/" class="btn">Back to Home</a>
+    <nav class="right-buttons">
+      <button class="btn most-liked-first">Likes Order</button>
+      <button class="btn most-disliked-first">Dislikes Order</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- LEFT: CURRENT OUTFIT -->
+    <section class="panel">
+      <header class="tab-left">Current Outfit</header>
+      <article class="body-left-vote">
+        <% const current=published[id]; %>
+          <% const liked=Array.isArray(likedOutfits) ? likedOutfits : []; %>
+            <% const disliked=Array.isArray(dislikedOutfits) ? dislikedOutfits : []; %>
+              <div class="avatar-box">
+                <!-- Base avatar always shown -->
+                <img class="layer" src="/assets/avatar/avatar.png">
+
+                <% if (current) { %>
+                  <% for (const layer in current) { %>
+                    <% if (layer=="hair" || layer=="top" || layer=="shoes" || layer=="pants" || layer=="skirt" ||
+                      layer=="accessory" ) { %>
+                      <% const url=current[layer]; %>
+                        <% if (url) { %>
+                          <img class="layer" src="<%= url%>"
+                            style="filter: hue-rotate(<%=current.hues?.[layer] || 0%>deg)">
+                          <% } %>
+                            <% } %>
+                              <% } %>
+                                <% } %>
+              </div>
+
+              <div class="vote-buttons">
+                <button data-id="<%= id %>" class="btn small-btn like">
+                  <%= liked.includes(id) ? "Liked" : "like" %>
+                </button>
+                <button data-id="<%= id %>" class="btn small-btn dislike">
+                  <%= disliked.includes(id) ? "Disliked" : "dislike" %>
+                </button>
+              </div>
+
+              <div class="vote-counts">
+                <p class="likes-count">likes: <%= current ? current.likes : 0 %>
+                </p>
+                <p class="dislikes-count">dislikes: <%= current ? current.dislikes : 0 %>
+                </p>
+              </div>
+
+      </article>
+    </section>
+
+    <!-- RIGHT: OUTFIT LIBRARY -->
+    <section class="panel">
+      <header class="tab-right">Outfit Library</header>
+
+      <article class="body-right">
+        <div class="library-grid">
+
+          <% Object.keys(published).forEach(identity=> { %>
+            <% const outfit=published[identity]; %>
+
+              <div class="published-thumb outfit-item" data-id="<%= identity %>" data-likes="<%= outfit.likes || 0 %>"
+                data-dislikes="<%= outfit.dislikes || 0 %>">
+                <div class="thumb-avatar">
+
+                  <img class="thumb-layer" src="/assets/avatar/avatar.png">
+
+                  <% if (outfit.hair) { %>
+                    <img class="thumb-layer" src="<%= outfit.hair %>"
+                      style="filter: hue-rotate(<%= outfit.hues?.hair || 0 %>deg)">
+                    <% } %>
+
+                      <% if (outfit.top) { %>
+                        <img class="thumb-layer" src="<%= outfit.top %>"
+                          style="filter: hue-rotate(<%= outfit.hues?.top || 0 %>deg)">
+                        <% } %>
+
+                          <% if (outfit.shoes) { %>
+                            <img class="thumb-layer" src="<%= outfit.shoes %>"
+                              style="filter: hue-rotate(<%= outfit.hues?.shoes || 0 %>deg)">
+                            <% } %>
+
+                              <% if (outfit.pants) { %>
+                                <img class="thumb-layer" src="<%= outfit.pants %>"
+                                  style="filter: hue-rotate(<%= outfit.hues?.pants || 0 %>deg)">
+                                <% } %>
+
+                                  <% if (outfit.skirt) { %>
+                                    <img class="thumb-layer" src="<%= outfit.skirt %>"
+                                      style="filter: hue-rotate(<%= outfit.hues?.skirt || 0 %>deg)">
+                                    <% } %>
+
+                                      <% if (outfit.accessory) { %>
+                                        <img class="thumb-layer" src="<%= outfit.accessory %>"
+                                          style="filter: hue-rotate(<%= outfit.hues?.accessory || 0 %>deg)">
+                                        <% } %>
+
+
+                </div>
+                <div class="thumb-stats">
+                  <span class="thumb-likes">❤ <%= outfit.likes || 0 %></span>
+                  <span class="thumb-dislikes">✖ <%= outfit.dislikes || 0 %></span>
+                </div>
+              </div>
+
+              <% }) %>
+
+        </div>
+      </article>
+    </section>
+    <script src="/js/voting.js"></script>
+  </main>
+
+</body>
+
+</html>
