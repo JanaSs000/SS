@@ -45,6 +45,7 @@ const server = http.createServer(app);
 const wss = initWSS(server);
 app.set("wss", wss);
 
-server.listen(8989, () => {
+const PORT = process.env.PORT || 8989;
+server.listen(PORT, () => {
   console.log("Sparkle Style running on http://localhost:8989");
 });
