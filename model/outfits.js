@@ -8,12 +8,25 @@ module.exports = function () {
     }
 
     return {
+
+        // -------------------------------
+        // GET ALL (NORMALIZED OBJECT)
+        // -------------------------------
         async getAllPublished() {
             const col = await collection();
             const docs = await col.find({}).toArray();
-            return Object.fromEntries(docs.map(d => [d._id, d]));
+
+            return Object.fromEntries(
+                docs.map(d => {
+                    const { _id, ...rest } = d;
+                    return [_id.toString(), rest];
+                })
+            );
         },
 
+        // -------------------------------
+        // PUBLISH / UPDATE
+        // -------------------------------
         async publishOutfit(id, outfit) {
             const col = await collection();
             const _id = id || Date.now().toString();
@@ -33,19 +46,31 @@ module.exports = function () {
             return _id;
         },
 
+        // -------------------------------
+        // DELETE
+        // -------------------------------
         async deletePublished(id) {
             const col = await collection();
-            await col.deleteOne({ _id: id });
+            await col.deleteOne({ _id: String(id) });
         },
 
+        // -------------------------------
+        // LIKE / DISLIKE
+        // -------------------------------
         async like(id) {
             const col = await collection();
-            await col.updateOne({ _id: id }, { $inc: { likes: 1 } });
+            await col.updateOne(
+                { _id: String(id) },
+                { $inc: { likes: 1 } }
+            );
         },
 
         async dislike(id) {
             const col = await collection();
-            await col.updateOne({ _id: id }, { $inc: { dislikes: 1 } });
+            await col.updateOne(
+                { _id: String(id) },
+                { $inc: { dislikes: 1 } }
+            );
         }
     };
 };

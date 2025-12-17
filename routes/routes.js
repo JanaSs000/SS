@@ -89,11 +89,14 @@ router.post("/dressup/publish", async (req, res) => {
    MY PUBLISHED
 ===================================================== */
 router.get("/mypublished", async (req, res) => {
-    const all = await outfits.getAllPublished();
+    const raw = await outfits.getAllPublished();
+    const all = raw && typeof raw === "object" ? raw : {};
     const user = req.query.user;
 
     const mine = Object.fromEntries(
-        Object.entries(all).filter(([, o]) => o.user === user)
+        Object.entries(all).filter(
+            ([, o]) => o && o.user && o.user === user
+        )
     );
 
     res.render("mypublished", {
@@ -101,6 +104,7 @@ router.get("/mypublished", async (req, res) => {
         outfits: mine
     });
 });
+
 
 /* =====================================================
    VOTING
@@ -112,9 +116,14 @@ router.get("/voting", async (req, res) => {
     try { likedOutfits = JSON.parse(req.cookies.liked_outfits || "[]"); } catch {}
     try { dislikedOutfits = JSON.parse(req.cookies.disliked_outfits || "[]"); } catch {}
 
-    const published = await outfits.getAllPublished();
+    const raw = await outfits.getAllPublished();
+    const published = raw && typeof raw === "object" ? raw : {};
+
     const ids = Object.keys(published);
-    const selectedId = req.query.id || ids[0] || null;
+    const selectedId =
+        req.query.id && published[req.query.id]
+            ? req.query.id
+            : ids[0] || null;
 
     res.render("voting", {
         title: "Voting Room",
@@ -124,6 +133,7 @@ router.get("/voting", async (req, res) => {
         dislikedOutfits
     });
 });
+
 
 router.get("/voting/:id", async (req, res) => {
     let likedOutfits = [];
