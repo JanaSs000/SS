@@ -149,9 +149,9 @@ window.addEventListener("DOMContentLoaded", () => {
         const outfit = {
             hair: clean(document.getElementById("layer-hair").src),
             top: clean(document.getElementById("layer-top").src),
+            shoes: clean(document.getElementById("layer-shoes").src),
             pants: clean(document.getElementById("layer-pants").src),
             skirt: clean(document.getElementById("layer-skirt").src),
-            shoes: clean(document.getElementById("layer-shoes").src),
             accessory: clean(document.getElementById("layer-accessory").src)
         };
     
