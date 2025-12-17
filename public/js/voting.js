@@ -1,4 +1,5 @@
-const ws = new WebSocket(`ws://${location.host}`);
+const protocol = location.protocol === "https:" ? "wss" : "ws";
+const ws = new WebSocket(`${protocol}://${location.host}`);
 
 ws.addEventListener("message", e => {
     let data;
