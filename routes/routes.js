@@ -5,6 +5,12 @@ const makeClothes = require("../model/clothes");
 const outfits = makeOutfits();
 const clothes = makeClothes();
 
+const uploadsDir = path.join(__dirname, "../public/assets/uploads");
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 const multer = require('multer');
 const fs = require("fs");
 const path = require("path");
