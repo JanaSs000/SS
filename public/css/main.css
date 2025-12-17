@@ -257,6 +257,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
+  cursor: pointer;
 }
 
 .vote-counts {
@@ -590,6 +591,7 @@ body {
   .vote-buttons {
     flex-direction: column;
     gap: 15px;
+    cursor: pointer;
   }
 
   .vote-counts {
@@ -1181,4 +1183,28 @@ body.christmas h3:has(+ .grid .item-pants) {
 
 body:not(.christmas) h3:has(+ .grid .item-accessory) {
   display: none;
+}
+
+/* LEFT PANEL CONTENT WRAPPER */
+.body-left-vote {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* prevent spill */
+}
+
+/* AVATAR AREA */
+.body-left-vote .avatar-box {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* BUTTONS + COUNTS STAY INSIDE */
+.body-left-vote .vote-buttons,
+.body-left-vote .vote-counts {
+  flex: 0 0 auto;
+  margin-top: 8px;
 }

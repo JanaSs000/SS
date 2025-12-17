@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const { initWSS } = require("./ws/index.js");
+require("dotenv").config();
 
 // import router
 const routes = require("./routes/routes.js");
