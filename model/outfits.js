@@ -1,57 +1,51 @@
-const fs = require("fs");
-const path = require("path");
-
-const PUBLISHPATH = path.join(__dirname, "..", "data", "published.json");
+const { connectDB } = require("./db");
 
 module.exports = function () {
 
-    let published = {};
-
-    function loadPublished() {
-        try {
-            published = JSON.parse(fs.readFileSync(PUBLISHPATH, "utf8"));
-        } catch {
-            published = {};
-        }
+    async function collection() {
+        const db = await connectDB();
+        return db.collection("published");
     }
-
-    function savePublished() {
-        fs.writeFileSync(PUBLISHPATH, JSON.stringify(published, null, 2));
-    }
-
-    loadPublished();
 
     return {
-        getAllPublished() {
-            return published;
+        async getAllPublished() {
+            const col = await collection();
+            const docs = await col.find({}).toArray();
+            return Object.fromEntries(docs.map(d => [d._id, d]));
         },
 
-        publishOutfit(id, outfit) {
-            if (id == null) {
-                id = Date.now().toString();
-              }
-            published[id] = published[id] || {};
-            Object.assign(published[id], outfit);
-            published[id].likes ||= 0;
-            published[id].dislikes ||= 0;
-            savePublished();
+        async publishOutfit(id, outfit) {
+            const col = await collection();
+            const _id = id || Date.now().toString();
+
+            await col.updateOne(
+                { _id },
+                {
+                    $set: {
+                        ...outfit,
+                        likes: outfit.likes || 0,
+                        dislikes: outfit.dislikes || 0
+                    }
+                },
+                { upsert: true }
+            );
+
+            return _id;
         },
 
-        deletePublished(id) {
-            delete published[id];
-            savePublished();
+        async deletePublished(id) {
+            const col = await collection();
+            await col.deleteOne({ _id: id });
         },
 
-        like(id) {
-            if (!published[id]) return;
-            published[id].likes++;
-            savePublished();
+        async like(id) {
+            const col = await collection();
+            await col.updateOne({ _id: id }, { $inc: { likes: 1 } });
         },
 
-        dislike(id) {
-            if (!published[id]) return;
-            published[id].dislikes++;
-            savePublished();
+        async dislike(id) {
+            const col = await collection();
+            await col.updateOne({ _id: id }, { $inc: { dislikes: 1 } });
         }
     };
 };
