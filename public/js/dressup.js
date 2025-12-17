@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("themechange", applyChristmasFilter);
 
     function highlightSelectedItems() {
-        const layers = ["hair", "top", "pants", "skirt", "shoes", "accessory"];
+        const layers = ["hair", "top","shoes", "pants", "skirt", "accessory"];
 
         layers.forEach(layer => {
             const layerEl = document.getElementById("layer-" + layer);
@@ -161,9 +161,9 @@ window.addEventListener("DOMContentLoaded", () => {
         outfit.hues = {
             hair: document.getElementById("layer-hair").dataset.hue || "0",
             top: document.getElementById("layer-top").dataset.hue || "0",
+            shoes: document.getElementById("layer-shoes").dataset.hue || "0",
             pants: document.getElementById("layer-pants").dataset.hue || "0",
             skirt: document.getElementById("layer-skirt").dataset.hue || "0",
-            shoes: document.getElementById("layer-shoes").dataset.hue || "0",
             accessory: document.getElementById("layer-accessory").dataset.hue || "0"
         };
     
@@ -258,7 +258,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (o && o.hues) {
 
-        const layers = ["hair", "top", "pants", "skirt", "shoes", "accessory"];
+        const layers = ["hair", "top","shoes", "pants", "skirt", "accessory"];
         layers.forEach(layer => {
             const hue = o.hues[layer] || "0";
             const el = document.getElementById("layer-" + layer);
@@ -513,7 +513,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     function clearChristmasLayers() {
-        const layers = ["hair", "top", "pants", "skirt", "shoes", "accessory"];
+        const layers = ["hair", "top","shoes", "pants", "skirt", "accessory"];
     
         layers.forEach(layer => {
             const el = document.getElementById("layer-" + layer);

@@ -231,7 +231,7 @@ function renderAvatarLayers(container, outfit) {
 
     if (!outfit) return;
 
-    const layers = ["hair", "top", "pants", "skirt", "shoes", "accessory"];
+    const layers = ["hair", "top","shoes", "pants", "skirt", "accessory"];
 
     layers.forEach(layer => {
         const url = outfit[layer];
