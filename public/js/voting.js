@@ -140,23 +140,15 @@ function updatedisLikeCounts(id, published) {
     }
 }
 
-async function handleOutfitSelection(box) {
-    const { id } = box.dataset;
-    if (!id) {
-        return;
-    }
+function handleOutfitSelection(box) {
+    const id = box.dataset.id;
+    if (!id) return;
 
-    try {
-        const payload = await fetch(`/voting/${encodeURIComponent(id)}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id })
-        }).then((res) => res.json());
+    const published = window.publishedOutfits;
+    const current = published?.[id];
+    if (!current) return;
 
-        updateCurrentOutfit(payload);
-    } catch (error) {
-        console.error("Unable to update outfit preview", error);
-    }
+    updateCurrentOutfit({ id, published });
 }
 
 function updateCurrentOutfit({ id, published }) {
