@@ -2,21 +2,20 @@ const express = require("express");
 const makeOutfits = require("../model/outfits");
 const makeClothes = require("../model/clothes");
 
+const multer = require("multer");
+const fs = require("fs");
+const path = require("path"); // ← MUST be before usage
+
+// CREATE UPLOADS DIR (DEPLOY SAFE)
+const uploadsDir = path.join(__dirname, "../public/assets/uploads");
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 const outfits = makeOutfits();
 const clothes = makeClothes();
 
-const uploadsDir = path.join(__dirname, "../public/assets/uploads");
-
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
-}
-
-const multer = require('multer');
-const fs = require("fs");
-const path = require("path");
-
 const router = express.Router();
-
 
 // -------------------------------------------------------
 // HOME
