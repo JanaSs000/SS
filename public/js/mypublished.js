@@ -17,7 +17,7 @@ document.querySelectorAll(".published-item").forEach(box => {
     base.src = "/assets/avatar/avatar.png";
     container.appendChild(base);
 
-    const layers = ["hair", "top", "pants", "skirt", "shoes", "accessory"];
+    const layers = ["hair", "top", "shoes", "pants", "skirt", "accessory"];
     layers.forEach(layer => {
       if (o[layer]) {
         const img = document.createElement("img");
