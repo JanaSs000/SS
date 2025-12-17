@@ -29,17 +29,18 @@
                 <img class="layer" src="/assets/avatar/avatar.png">
 
                 <% if (current) { %>
-                  <% for (const layer in current) { %>
-                    <% if (layer=="hair" || layer=="top" || layer=="shoes" || layer=="pants" || layer=="skirt" ||
-                      layer=="accessory" ) { %>
-                      <% const url=current[layer]; %>
-                        <% if (url) { %>
-                          <img class="layer" src="<%= url%>"
-                            style="filter: hue-rotate(<%=current.hues?.[layer] || 0%>deg)">
-                          <% } %>
-                            <% } %>
-                              <% } %>
-                                <% } %>
+                  <% const ORDER = ["hair","top","skirt","pants","shoes","accessory"]; %>
+                
+                  <% ORDER.forEach(layer => { %>
+                    <% const url = current[layer]; %>
+                    <% if (url) { %>
+                      <img
+                        class="layer"
+                        src="<%= url %>"
+                        style="filter: hue-rotate(<%= current.hues?.[layer] || 0 %>deg)">
+                    <% } %>
+                  <% }) %>
+                <% } %>
               </div>
 
               <div class="vote-buttons">
